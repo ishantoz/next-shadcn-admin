@@ -1,9 +1,10 @@
 'use client'
 
+import { Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { Tasks } from '@/features/tasks'
 
-export default function TasksPage() {
+function TasksContent() {
   const searchParams = useSearchParams()
   
   const page = searchParams.get('page') ? Number(searchParams.get('page')) : 1
@@ -20,6 +21,14 @@ export default function TasksPage() {
       priority={priority as any}
       filter={filter}
     />
+  )
+}
+
+export default function TasksPage() {
+  return (
+    <Suspense fallback={<div className='flex h-screen items-center justify-center'>Loading...</div>}>
+      <TasksContent />
+    </Suspense>
   )
 }
 

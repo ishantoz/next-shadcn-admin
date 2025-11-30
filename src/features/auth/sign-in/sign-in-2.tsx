@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { Logo } from '@/assets/logo'
 import { cn } from '@/lib/utils'
 import dashboardDark from './assets/dashboard-dark.png'
@@ -50,14 +51,14 @@ export function SignIn2() {
         )}
       >
         <img
-          src={dashboardLight}
+          src={dashboardLight.src}
           className='dark:hidden'
           width={1024}
           height={1151}
           alt='Shadcn-Admin'
         />
         <img
-          src={dashboardDark}
+          src={dashboardDark.src}
           className='hidden dark:block'
           width={1024}
           height={1138}

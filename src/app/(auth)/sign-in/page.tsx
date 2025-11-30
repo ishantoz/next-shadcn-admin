@@ -1,5 +1,6 @@
 'use client'
 
+import { Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import {
   Card,
@@ -12,7 +13,7 @@ import {
 import { AuthLayout } from '@/features/auth/auth-layout'
 import { UserAuthForm } from '@/features/auth/sign-in/components/user-auth-form'
 
-export default function SignInPage() {
+function SignInContent() {
   const searchParams = useSearchParams()
   const redirect = searchParams.get('redirect')
 
@@ -50,6 +51,33 @@ export default function SignInPage() {
         </CardFooter>
       </Card>
     </AuthLayout>
+  )
+}
+
+function SignInFallback() {
+  return (
+    <AuthLayout>
+      <Card className='gap-4'>
+        <CardHeader>
+          <CardTitle className='text-lg tracking-tight'>Sign in</CardTitle>
+          <CardDescription>
+            Enter your email and password below to <br />
+            log into your account
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className='text-muted-foreground text-center py-4'>Loading...</div>
+        </CardContent>
+      </Card>
+    </AuthLayout>
+  )
+}
+
+export default function SignInPage() {
+  return (
+    <Suspense fallback={<SignInFallback />}>
+      <SignInContent />
+    </Suspense>
   )
 }
 

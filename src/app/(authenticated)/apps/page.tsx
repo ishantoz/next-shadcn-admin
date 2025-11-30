@@ -1,9 +1,10 @@
 'use client'
 
+import { Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { Apps } from '@/features/apps'
 
-export default function AppsPage() {
+function AppsContent() {
   const searchParams = useSearchParams()
   
   const type = searchParams.get('type') as 'all' | 'connected' | 'notConnected' | undefined
@@ -16,6 +17,14 @@ export default function AppsPage() {
       filter={filter}
       sort={sort}
     />
+  )
+}
+
+export default function AppsPage() {
+  return (
+    <Suspense fallback={<div className='flex h-screen items-center justify-center'>Loading...</div>}>
+      <AppsContent />
+    </Suspense>
   )
 }
 

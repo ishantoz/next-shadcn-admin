@@ -1,10 +1,11 @@
 'use client'
 
+import { Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { Users } from '@/features/users'
 import { roles } from '@/features/users/data/data'
 
-export default function UsersPage() {
+function UsersContent() {
   const searchParams = useSearchParams()
   
   // Parse search params similar to TanStack Router
@@ -22,6 +23,14 @@ export default function UsersPage() {
       role={role as any}
       username={username}
     />
+  )
+}
+
+export default function UsersPage() {
+  return (
+    <Suspense fallback={<div className='flex h-screen items-center justify-center'>Loading...</div>}>
+      <UsersContent />
+    </Suspense>
   )
 }
 
