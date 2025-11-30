@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { useState } from 'react'
 import { Check, X } from 'lucide-react'
 import { showSubmittedData } from '@/lib/show-submitted-data'

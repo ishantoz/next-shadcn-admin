@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
 
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import {
   type SortingState,
@@ -49,7 +49,6 @@ export function TasksTable({
   filter = '',
 }: DataTableProps) {
   const router = useRouter()
-  const searchParams = useSearchParams()
 
   // Local UI-only states
   const [rowSelection, setRowSelection] = useState({})

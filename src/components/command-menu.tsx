@@ -1,10 +1,10 @@
 'use client'
 
-import React from 'react'
 import { useRouter } from 'next/navigation'
+import React from 'react'
 import { ArrowRight, ChevronRight, Laptop, Moon, Sun } from 'lucide-react'
-import { useSearch } from '@/context/search-provider'
-import { useTheme } from '@/context/theme-provider'
+import { useSearch } from '@/context/search.provider'
+import { useTheme } from '@/context/theme.provider'
 import {
   CommandDialog,
   CommandEmpty,
